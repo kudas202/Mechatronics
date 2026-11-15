@@ -1,0 +1,42 @@
+Project 1.B RGB Night Light, 11/10/2026
+int toggle = 9, brightness = 0, mAx = 0;
+const int pinSwitch = 2, lightSensor = A1, potPin = A3;
+
+
+
+void setup()
+{
+for (int i=9; i<=12; i++){
+  pinMode(i, OUTPUT);
+}
+  Serial.begin(9600);
+}
+
+
+
+
+void loop()
+{
+   if (digitalRead(12)==HIGH)
+  {
+    toggle++;
+    delay(300);
+  }
+  toggle = (toggle % 3) + 9;
+
+
+
+
+  if (digitalRead(pinSwitch)==HIGH){
+    analogWrite(toggle, LOW);
+  }
+  else {
+    int lightValue = analogRead(lightSensor);
+    int potValue = analogRead(potPin);
+    mAx = map(potValue, 0, 1023, 0, 255);
+    brightness = map(lightValue, 0, 1023, mAx, 0);
+    analogWrite(toggle, brightness);
+    delay(100);
+    digitalWrite(toggle, LOW);
+  }
+}
