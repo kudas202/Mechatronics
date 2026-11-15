@@ -1,0 +1,44 @@
+int switchPin = 2;
+int buttonPin = 12;
+int ledOne = 4;
+int ledTwo = 5;
+int ledThree = 6;
+int ledFour = 7;
+int ledFive = 8;
+int Delay = 100;
+
+
+void blink(int pin, int delayTime) //blink setup for the LEDs
+{
+  digitalWrite(pin, HIGH);
+  while(digitalRead(buttonPin) == HIGH){delay(50);}   //while the button is being pressed, the corresponding led will stay on
+  delay(delayTime);
+  digitalWrite(pin, LOW);
+  delay(delayTime);
+}
+
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(switchPin, INPUT);
+pinMode(buttonPin, INPUT);
+pinMode(ledOne, OUTPUT);
+pinMode(ledTwo, OUTPUT);
+pinMode(ledThree, OUTPUT);
+pinMode(ledFour, OUTPUT);
+pinMode(ledFive, OUTPUT);
+}
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (digitalRead(switchPin) == HIGH)
+  {Delay = 100;} else {Delay = 500;} //if the pin is HIGH the delay will be faster, if the pin is LOW the delay will be slower
+    blink(ledOne, Delay);
+    blink(ledTwo, Delay);
+    blink(ledThree, Delay);
+    blink(ledFour, Delay);
+    blink(ledFive, Delay);
+}
+
+
