@@ -1,3 +1,5 @@
+//This project cycles through the four sensors when 1)the switch is off 2)the button is pressed : and will print the number of the sensor.
+//when the switch is turned on, the sensor will display the reading (sensorValue) and then will correspond to the brightness of the LED.
 int sensorValue = 0, brightness = 0, currSensor = 0, heLLo = 0; //currSensor was not named in my setup, I will use it to determine which sensor is in use
 const int pinSwitch = 2, LED = 13, pinButton = 12;
 const int sensor[] = {A0, A1, A2, A3};
